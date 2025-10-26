@@ -1,68 +1,169 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* ---------------------------------------------
+   Import Tailwind base styles and utilities
+--------------------------------------------- */
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* ---------------------------------------------
+   Base styles for mobile (default)
+   Applies to all screen sizes unless overridden
+--------------------------------------------- */
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling for anchor links and scrollIntoView */
+  scroll-padding-top: 64px; /* Prevents content from hiding behind sticky header on scroll */
+  font-size: 16px; /* Default font size for mobile */
+  font-family: "Inter", sans-serif; /* Sets Inter as the default font */
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* ---------------------------------------------
+   Tablet styles (min-width: 640px)
+   Slightly increase font size and scroll padding
+--------------------------------------------- */
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 72px; /* Adjusts for taller tablet header */
+    font-size: 17px; /* Slightly larger text for tablets */
   }
-  a:hover {
-    color: #747bff;
+}
+
+/* ---------------------------------------------
+   Small laptop styles (min-width: 768px)
+--------------------------------------------- */
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 80px; /* More space for sticky header */
+    font-size: 18px; /* Comfortable reading size on small laptops */
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* ---------------------------------------------
+   Large laptop styles (min-width: 1024px)
+--------------------------------------------- */
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 88px; /* Accommodates larger header */
+    font-size: 19px; /* Slightly larger font for readability */
   }
+}
+
+/* ---------------------------------------------
+   Desktop styles (min-width: 1280px)
+--------------------------------------------- */
+@media (min-width: 1280px) {
+  html {
+    scroll-padding-top: 96px; /* Maximum scroll padding for sticky header */
+    font-size: 20px; /* Optimal font size for desktop users */
+  }
+}
+
+/* ---------------------------------------------
+   Font theme variables
+   Define reusable font families for global use
+--------------------------------------------- */
+@theme {
+  --font-Roboto: "Roboto", sans-serif;
+  --font-Tinos: "Tinos", serif;
+  --font-Dm-serif: "DM Serif Text", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-Dm-sans: "DM Sans", sans-serif;
+}
+
+/* ---------------------------------------------
+   Color theme variables
+   Includes brand colors, grayscale, and gradients
+--------------------------------------------- */
+@theme {
+  /* ---------------------------------------------
+     Primary green palette (brand base)
+  --------------------------------------------- */
+  --color-primary-50: #dfe7e2;
+  --color-primary-100: #c9d7ce;
+  --color-primary-200: #aec2b5;
+  --color-primary-300: #93ae9d;
+  --color-primary-400: #789a84;
+  --color-primary-500: #5d866c;
+  --color-primary-600: #4d705a;
+  --color-primary-700: #3e5948;
+  --color-primary-800: #2e4336;
+  --color-primary-900: #1f2d24;
+  --color-primary-950: #131b16;
+
+  /* ---------------------------------------------
+     Neutral white and dark tones
+  --------------------------------------------- */
+  --color-primary-white: #fcfcfd;
+  --color-primary-dark: #0f0e0e;
+
+  /* ---------------------------------------------
+     Accent blue (used for links, buttons, etc.)
+  --------------------------------------------- */
+  --color-blue: #41608f;
+
+  /* ---------------------------------------------
+     Grayscale palette (UI backgrounds, borders)
+  --------------------------------------------- */
+  --color-grey-50: #f9fafb;
+  --color-grey-100: #f0f2f5;
+  --color-grey-200: #e4e7ec;
+  --color-grey-300: #d0d5dd;
+  --color-grey-400: #98a2b3;
+  --color-grey-500: #667185;
+  --color-grey-600: #475467;
+  --color-grey-700: #344054;
+  --color-grey-800: #1d2939;
+  --color-grey-900: #101828;
+
+  /* ---------------------------------------------
+     Crayola yellow palette (highlight, CTA)
+  --------------------------------------------- */
+  --color-crayola-100: #feefd1;
+  --color-crayola-200: #fde4b3;
+  --color-crayola-300: #fcd68d;
+  --color-crayola-400: #fcc867;
+  --color-crayola-500: #fbbb41;
+  --color-crayola-600: #faad1b;
+
+  /* ---------------------------------------------
+     Sunset orange palette (new accent theme)
+     Great for buttons, alerts, and warm highlights
+  --------------------------------------------- */
+  --color-orange-50: #fff4e6;
+  --color-orange-100: #ffe0cc;
+  --color-orange-200: #ffc299;
+  --color-orange-300: #ffa366;
+  --color-orange-400: #ff8533;
+  --color-orange-500: #ff6600;
+  --color-orange-600: #cc5200;
+  --color-orange-700: #993d00;
+  --color-orange-800: #662900;
+  --color-orange-900: #331400;
+
+  /* ---------------------------------------------
+     Gradient backgrounds
+  --------------------------------------------- */
+  --background-mixed-black-bronze: linear-gradient(
+    135deg,
+    #789a84 20%,
+    #98a2b3 30%,
+    #feefd1 10%,
+    #3e5948 30%,
+    #c9d7ce 10%
+  );
+
+  --color-gradient-1: linear-gradient(135deg, #c9d7ce, #98a499, #768678);
+
+  /* New gradient: Green to Orange sunset */
+  --color-gradient-sunset: linear-gradient(
+    135deg,
+    #5d866c 0%,
+    #faad1b 40%,
+    #ff6600 80%
+  );
+
+  /* New gradient: Crayola yellow to grey */
+  --color-gradient-softlight: linear-gradient(
+    135deg,
+    #feefd1 0%,
+    #f0f2f5 50%,
+    #d0d5dd 100%
+  );
 }
